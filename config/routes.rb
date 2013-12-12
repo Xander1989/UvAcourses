@@ -1,6 +1,7 @@
 UvAcourses::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/help"
+  get "static_pages/profile"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
