@@ -37,14 +37,21 @@ Er zijn in principe 2 mogelijkheden waarin de app zich kan bevinden.
 
 Dit is de basis van de website, alle pagina's die beschikbaar zijn op dit moment zijn voornamelijk statisch pagina's met basis informatie.
 Het is op dit moment NIET mogelijk om door de verschillende vakken heen te zoeken/bladeren, hiervoor dient men zich eerst te registreren.
-![alt text][id]
-[id]: /doc/voorbeeld1.jpg "Voorbeeld Pagina"
+![alt text](https://raw.github.com/Xander1989/UvAcourses/master/doc/voorbeeld2.jpg)
+
 
 ### Ingelogde gebruiker
 
 Wanneer een gebruiker zich heeft geregistreerd kan hij vervolgens inloggen.
 De gebruiker wordt dan geforward naar zijn/haar persoonlijke pagina.
-Op het moment dat de gebruiker is ingelogd
+Op de persoonlijke pagina van elke gebruiker staat aangegeven welke courses hij volgt en eventueel wil gaan volgens:
 
-![alt text][id]
-[id]: /doc/voorbeeld2.jpg "Voorbeeld Pagina"
+- courses i'm shopping
+- courses i'm taking
+- recently viewed
+
+![alt text](https://raw.github.com/Xander1989/UvAcourses/master/doc/voorbeeld2.jpg)
+
+Onderliggende structuur
+-----------------------
+
