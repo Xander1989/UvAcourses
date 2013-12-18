@@ -221,6 +221,14 @@ De relaties tussen de verschillende Database classes zijn als volgt:
 - Course belongs to 'Staff'
 - User_Courses belongs to 'User'
 
+
+
+
+
+![alt text](https://raw.github.com/Xander1989/UvAcourses/master/doc/tabel.jpg)
+
+
+
 Style guide
 ==
 
