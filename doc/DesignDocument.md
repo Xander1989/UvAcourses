@@ -210,8 +210,8 @@ Alle informatie van alle courses staat verzameld in 1 bestand. Deze wordt opgede
 ### User_Courses
 
 - User ID
-- Courses i'm taking
-- Courses i'm shopping
+- Course ID
+- Courses being Shopped or taken
 
 De relaties tussen de verschillende Database classes zijn als volgt:
 
