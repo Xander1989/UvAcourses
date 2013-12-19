@@ -15,7 +15,7 @@ courses = Nokogiri::XML(File.open("courses.xml"))
 courses.css('course').each do |node|
   children = node.children
 
-  Courses.create(
+  Course.create(
     acode: node['acode'],
         code: node['code'],
         sgid: node['sgid'],
