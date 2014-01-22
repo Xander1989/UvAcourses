@@ -11,4 +11,10 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  def list
+  	@courses = Course.all
+  end
+
+  
+
 end

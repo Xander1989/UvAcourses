@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 8 }
 	
+  def search
+  @search_courses = Course.search(params[:search])
+  end
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
