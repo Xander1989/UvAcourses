@@ -12,7 +12,8 @@ class StaticPagesController < ApplicationController
   end
 
   def list
-  	@courses = Course.all
+  	@courses = Course.all.paginate(page: params[:page], :per_page => 10) 
+    @staffs = Staff.all.paginate(page: params[:page], :per_page => 10) 
   end
 
   

@@ -13,25 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20140107133645) do
 
-  create_table "course_programmes", force: true do |t|
-    t.string   "course_sgid"
-    t.integer  "programme_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "course_staffs", force: true do |t|
-    t.string   "course_sgid"
-    t.integer  "staff_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "courses", force: true do |t|
     t.string   "acode"
     t.string   "code"
     t.string   "sgid"
     t.string   "name"
+    t.string   "staff_name"
     t.integer  "ects"
     t.integer  "year"
     t.string   "period"

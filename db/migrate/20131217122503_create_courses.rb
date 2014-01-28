@@ -5,6 +5,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :code
       t.string :sgid
       t.string :name
+      t.string :staff_name
       t.integer :ects
       t.integer :year
       t.string :period

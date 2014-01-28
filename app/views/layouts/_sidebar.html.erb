@@ -1,0 +1,19 @@
+<div class="column">
+  <aside class="span4">
+    <section>
+      <h1>
+        Courses Store
+      </h1>
+      <div id = "searcharea">
+              <h2>Search Courses</h2>
+           
+                <%= form_tag users_path, :method => 'get' do %>
+                <p>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Search", :name => nil %>            
+                </p>
+                <%end%>
+            </div>
+    </section>
+  </aside>
+</div>

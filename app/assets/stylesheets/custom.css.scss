@@ -56,6 +56,12 @@ p {
   line-height: 1.7em;
 }
 
+/*container */
+
+.container {
+  border-left: thin solid #000000;
+  padding-left: 20px;
+}
 
 /* header */
 
@@ -109,7 +115,7 @@ aside {
     border-top: 1px solid $grayLighter;
     &:first-child {
       border: 0;
-      padding-top: 0;
+      padding: 5px;
     }
     span {
       display: block;
@@ -117,10 +123,10 @@ aside {
       line-height: 1;
     }
     h1 {
-      font-size: 1.4em;
-      text-align: left;
+      font-size: 2.0em;
+      text-align: center;
       letter-spacing: -1px;
-      margin-bottom: 3px;
+      margin-bottom: 20px;
       margin-top: 0px;
     }
   }
