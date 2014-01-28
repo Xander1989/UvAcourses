@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
 
-   def index
+   def index 
+    courses =  Course.all
+     @result = Array.new
+     courses.each do |course|
+      if course.name.include? params[:search]
+        @result.push(course)
+      end
+     end
    end
 
    def new
@@ -9,10 +16,6 @@ class UsersController < ApplicationController
    end
 
    def show
-    @courses = Course.all    
-    @courses = Course.search(params[:search])
-
-   
    end
 
  def create
