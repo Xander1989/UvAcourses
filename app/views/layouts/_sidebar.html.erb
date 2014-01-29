@@ -7,11 +7,14 @@
       <div id = "searcharea">
               <h2>Search Courses</h2>
            
-                <%= form_tag users_path, :method => 'get' do %>
-                <p>
-                  <%= text_field_tag :search, params[:search] %>
+                <%= form_tag users_path, :method => 'get' do %>                
+                  
+                  <%= text_field_tag :search, params[:search]%> </br>
+                  <%= select_tag "type", options_for_select(["course", "sgid", "descriptions", "staff"],params[:type]), class: 'form_input'%>
+
+                  
                   <%= submit_tag "Search", :name => nil %>            
-                </p>
+                
                 <%end%>
             </div>
     </section>

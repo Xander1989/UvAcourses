@@ -1,84 +1,27 @@
-<!-- SEARCH FUNCTION HERE-->                                
-  <div id = "findcourse">
 
-<!-- TABELLEN MOETEN WEG EN GEWOON TEKST MET CSS OPMAAK WORDEN is nu voor overzicht-->
 
-    <table>
-        <tr>
-          <td>
-            
-            <!-- SERACHBAR -->
-            <div id = "searcharea">
-              <h2>Search Courses</h2>
-           
-                <%= form_tag users_path, :method => 'get' do %>
+<h1> Courses </h1>
+
+<% @courses.each do |course| %>
+
+<tr>
+ <H3><%= course.name %></H3>
+ <h4><%=h course.institute%></h4>
+    <div class="description">
+      <%= truncate(strip_tags(sanitize(course.description)), length: 500)%>
+      <%= link_to "[more...]", action: "show", courses: course.name %>
+<h4>
+  Staff: <%= course.staff_name %> 
+</h4>
+</br>
+
+<%= form_tag users_path, :method => 'get' do %>
                 <p>
-                  <%= text_field_tag :search, params[:search] %>
-                  <%= submit_tag "Search", :name => nil %>            
+                  <%= submit_tag "shop", :name => nil %>            
                 </p>
                 <%end%>
-            </div>
-                
-          
-            
-            <!-- DROPDOWN WITHCOURSES-->
-            <select>
-              <option>Computer Sciences</option>
-              <option>Engineering</option>
-              <option>Japanese</option>
-            </select>
-            
-            <!-- COURSE INFO AREA-->
-            <div id= "resultarea">
 
-        <textarea name = "result" rows="20" cols="75" >
+</br>                 
+<%end%> 
 
-	        <% @courses.each do |course| %>
-					
-					<%= course.name %>
-					
-			<%end%>	
-
-		</textarea>
-            </div>
-
-          </td>
-
-          
-          <td>
-            <div id= "courseinfo">
-              <textarea name = "course_details"  rows="25" cols="75" >
-
-                  <% @courses.each do |course| %>
-                  <% @search %>
-
-                  <%end%>
-
-              </textarea>
-            </div>
-            
-          </td>
-
-      </tr>
-    </table>
-  </div>
-
-<!-- BUTTONS  SHOP JOIN-->
-  
-      <table>
-        <tr>  
-          <td>
-            <form method="get" action="#">
-                <button type="submit">Shop</button> or 
-            </form>
-          </td>
-
-          <td>  
-            <form method="get" action="#">
-                <button type="submit">Join Course</button>
-            </form>
-          </td>
-      </table>
-
-
-<!-- END SEARCH FUNCTION -->
+<div class="paginate"><%= will_paginate @courses %></div>

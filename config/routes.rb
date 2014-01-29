@@ -4,7 +4,8 @@ UvAcourses::Application.routes.draw do
   resources :courses
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  root  'static_pages#home'
+ 
+  root 'static_pages#home'
 
   match '/index',   to: 'course#index',       via: 'get'
   match '/signup',  to: 'users#new',          via: 'get'

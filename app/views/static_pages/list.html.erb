@@ -8,19 +8,12 @@
  <h4><%=h course.institute%></h4>
 		<div class="description">
 			<%= truncate(strip_tags(sanitize(course.description)), length: 500)%>
+			<%= link_to "[more...]", action: "show", course_sgid: course.sgid %>
 </br>
 <h4>
 	Staff: <%= course.staff_name %>	
 </h4>
 </br>
-
-<%= form_tag users_path, :method => 'get' do %>
-                <p>
-                  <%= submit_tag "shop", :name => nil %>            
-                </p>
-                <%end%>
-
-</br>                	
 <%end%>	
 
-<!-- <div class="paginate"><%= will_paginate @courses %></div> -->
+<div class="paginate"><%= will_paginate @courses %></div>
