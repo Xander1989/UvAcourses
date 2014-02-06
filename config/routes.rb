@@ -1,9 +1,17 @@
 UvAcourses::Application.routes.draw do
-
-  
-  resources :courses
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :users do
+      collection do 
+        get :courses
+      end
+    end
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :courses
+    # map.resources :products, :collection => { :edit_multiple => :post, :update_multiple => :put }
+    resources :user_courses_relationships, only: [:create, :destroy, :update_multiple] do
+        collection do
+            post :update_multiple
+        end
+    end
  
   root 'static_pages#home'
 
@@ -15,6 +23,8 @@ UvAcourses::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/list',  to: 'static_pages#list',          via:'get'
+  match '/mycourses', to: 'users#mycourses',    via: 'get'
+  match 'shop',     to: 'users#shop',           via: 'get'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
