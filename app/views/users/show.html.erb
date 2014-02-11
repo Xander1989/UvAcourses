@@ -1,23 +1,37 @@
+<table class="table table-bordered courseview" style="border-collapse:collapse;">
+  <thead class="accordion-group">
+  	<tr>
+  	  <th><%=  "Catalogue Number" %></th>
+      <th><%=  "Course Name" %></th>
+      <th><%= "ects"	%> </th>
+  	</tr>
+  </thead>
+  <tbody class="accordion-group">
+  	<% @courses.each do |course| %>
+  	  <tr data-toggle="collapse" data-target="#<%= course.id %>" class="accordion-toggle">
+	      <td><%= course.acode %></td>
+        <td><%= course.name %></td>
+	      <td><%= course.ects %></td>
+      </tr>
+      <tr class="hiderow">
+        <td colspan="3" class="hiddenRow"><div class="accordian-body collapse" id="<%= course.id %>"> 
+        <%= render 'shop', :course => course %>
+        <ul>
+       	  <li> <b> Staff </b> <%= course.staff_name %> </li> 
+       	  <li> <b> Time Period: </b> <%= course.period %> </li>
+       	  <li> <b> Institute: </b> <%= course.institute %> </li>
+     	    <li> <b> Objectives: </b> <%= strip_tags(sanitize(course.goals)) %> </li> 
+     	    <li> <b> Description: </b> <%= strip_tags(sanitize(course.description)) %> </li> 
+     	    <li> <b> Study Materials: </b>  <%= strip_tags(sanitize(course.lecture_material)) %> </li>
+     	    <li> <b> Examination: </b> <%= strip_tags(sanitize(course.examination)) %> </li> 
+       </ul> </div>
+     </td> 
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
-<h1> Courses </h1>
 
-<% @courses.each do |course| %>
-
-<tr>
- <H3><%= course.name %></H3>
- <h4><%=h course.institute%></h4>
-    <div class="description">
-      <%= truncate(strip_tags(sanitize(course.description)), length: 500)%>
-      <%= link_to "[more...]", action: "show", courses: course.name %>
-<h4>
-  Staff: <%= course.staff_name %> 
-</h4>
-</br>
-
-<%= render 'shop' , :course => course %>
-
-</br>                 
-<%end%> 
 
 <div class="paginate"><%= will_paginate @courses %></div>

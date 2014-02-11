@@ -15,7 +15,7 @@ def create
       end
     end
     respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to users_path}
         format.js
     end
   end
@@ -25,7 +25,7 @@ def create
     @relationship.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to users_path }
       format.js  
     end
   end
@@ -38,14 +38,14 @@ def create
           UserCoursesRelationship.where("course_id = ?", course.id)[0].destroy
           flash[:success] = "Courses succesfully removed from your shopping bag."
         else
-          current_student.take!(course)
+          current_user.take!(course)
           flash[:success] = "Courses succesfully taken!"
         end 
       end    
-      redirect_to root_path
+      redirect_to users_path
     else
       flash[:error] = "You need to make a selection before clicking a button"
-      redirect_to shop_path
+      redirect_to users_path
     end
   end
 end

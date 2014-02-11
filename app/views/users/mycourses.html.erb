@@ -1,14 +1,66 @@
-<% @courses.each do |course| %>
+<table class="table table-bordered courseview" style="border-collapse:collapse;">
+  <thead class="accordion-group">
+    <tr>
+      <th><%=  "Courses I'm Shopping" %></th>
+      <th><%=  "Courses I'm Taking" %></th>
+    </tr>
+  </thead>
 
-<tr>
- <H3><%= course.name %></H3>
- <h4><%=h course.sgid%></h4>
+<tbody>
+
+  <td id= 'shopping'>
+    
+        
+          <%= form_tag update_multiple_user_courses_relationships_path do %>
+            
+            <% @courses.each do |course| %>
+            <%= check_box_tag "course_ids[]", course.id %>
+             <%= course.name %> </br> 
+             <%=h course.sgid%> 
+             </br>
+             </br>      
+          
+            
+          <% end %>
+          
+          </br>
+          </br>
+          
+      <%= submit_tag "Take Selection", :name => 'take_button', class: "btn btn-success" %>
+      <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
+
+          <% end %>
+
+    
+</td> 
+
+
+
+  <td id= 'taking'>
+  
 
       
-<h4>
-  Staff: <%= course.staff_name %> 
-</h4>
+          <%= form_tag update_multiple_user_courses_relationships_path do %>
+            
+            <% @course.each do |course| %>
+            <%= check_box_tag "course_ids[]", course.id %>
+             <%= course.name %> </br>
+             <%=h course.sgid%> 
+             </br>
+             </br>        
+          
+            
+          <% end %>
 
-</br>
+            </br>
+            </br>
+      <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
 
-<%end%>
+          <% end %>
+
+       
+</td>
+
+</tbody>
+</table>
+

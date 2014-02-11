@@ -1,5 +1,3 @@
-<h1> Courses </h1>
-
 <% @result.each do |course| %>
 
 <tr>
@@ -11,12 +9,12 @@
 <h4>
 	Staff: <%= course.staff_name %>	
 </h4>
+
+<%= render 'shop' , :course => course %>
+
 </br>
 
-<%= form_tag users_path, :method => 'get' do %>
-                <p>
-                  <%= submit_tag "shop", :name => nil %>            
-                </p>
-                <%end%>
+
+
 <%end%>
                 

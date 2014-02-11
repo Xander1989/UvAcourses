@@ -34,6 +34,10 @@ elsif params[:type] == 'staff'
     end
   end
 end
+      
+    def current_course
+      @courses = Course.all
+    end
 
    def shop
     @courses = Course.joins(:user_courses_relationships).where("shop = ?", true).paginate(:per_page => 10, :page => params[:page])
@@ -41,6 +45,7 @@ end
 
    def mycourses
      @courses = Course.joins(:user_courses_relationships).where("shop = ?", true).paginate(:per_page => 10, :page => params[:page])
+     @course = Course.joins(:user_courses_relationships).where("take = ?", true).paginate(:per_page => 10, :page => params[:page])
    end
 
    def new
@@ -50,6 +55,7 @@ end
 
    def show
     @courses = Course.all.paginate(page: params[:page], :per_page => 10)
+    end
 
    end
 
@@ -70,4 +76,4 @@ end
       params.require(:user).permit(:studienummer, :email, :password,
                                    :password_confirmation)
     end
-end
+
