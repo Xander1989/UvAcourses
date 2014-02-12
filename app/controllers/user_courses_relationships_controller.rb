@@ -15,7 +15,7 @@ def create
       end
     end
     respond_to do |format|
-        format.html { redirect_to users_path}
+        format.html { redirect_to show_path}
         format.js
     end
   end
@@ -42,10 +42,10 @@ def create
           flash[:success] = "Courses succesfully taken!"
         end 
       end    
-      redirect_to users_path
+      redirect_to mycourses_path
     else
       flash[:error] = "You need to make a selection before clicking a button"
-      redirect_to users_path
+      redirect_to mycourses_path
     end
   end
 end

@@ -15,6 +15,7 @@ UvAcourses::Application.routes.draw do
  
   root 'static_pages#home'
 
+  match '/show' ,    to: 'users#show',          via: 'get'
   match '/index',   to: 'course#index',       via: 'get'
   match '/signup',  to: 'users#new',          via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
@@ -23,8 +24,10 @@ UvAcourses::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/mycourses', to: 'users#mycourses',    via: 'get'
-  match '/recently_viewed', to: 'users#recently_viewed', via: 'get'
+  match '/recent', to: 'users#recently_viewed', via: 'get'
   match 'shop',     to: 'users#shop',           via: 'get'
+  match '/edit',    to: 'users#edit',           via: 'get'
+  match '/recent', to: 'users#set_cookie', via: 'post'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

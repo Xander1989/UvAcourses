@@ -13,7 +13,7 @@
         
           <%= form_tag update_multiple_user_courses_relationships_path do %>
             
-            <% @courses.each do |course| %>
+            <% @shop.each do |course| %>
             <%= check_box_tag "course_ids[]", course.id %>
              <%= course.name %> </br> 
              <%=h course.sgid%> 
@@ -42,7 +42,7 @@
       
           <%= form_tag update_multiple_user_courses_relationships_path do %>
             
-            <% @course.each do |course| %>
+            <% @take.each do |course| %>
             <%= check_box_tag "course_ids[]", course.id %>
              <%= course.name %> </br>
              <%=h course.sgid%> 

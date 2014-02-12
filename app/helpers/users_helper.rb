@@ -1,5 +1,12 @@
 module UsersHelper
 
+def sign_in(user)
+    remember_token = User.new_remember_token
+    cookies.permanent[:remember_token] = remember_token
+    user.update_attribute(:remember_token, User.encrypt(remember_token))
+    self.current_user = user
+  end
+
   # Returns the Gravatar (http://gravatar.com/) for the given user.
   def gravatar_for(user)
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
