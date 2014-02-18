@@ -14,43 +14,47 @@
 
     <tbody>
       <td id= 'shopping'>
-              <%= form_tag update_multiple_user_courses_relationships_path do %>
-                <% @shop.each do |course| %>
-                <%= check_box_tag "course_ids[]", course.id %>
-                 <%= course.name %> </br> 
-                 <%=h course.sgid%> 
-                 </br>
-                 </br>      
-              <% end %>  
-              </br>
-              </br>
-              
-          <%= submit_tag "Take Selection", :name => 'take_button', class: "btn btn-success" %>
-          <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
+      </br>
+        <%= submit_tag "Take Selection", :name => 'take_button', class: "btn btn-success" %>
+        <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
 
-              <% end %>
+          </br>
+          </br>
+ 
+            <%= form_tag update_multiple_user_courses_relationships_path do %>
+              <% @shop.each do |course| %>
+              <%= check_box_tag "course_ids[]", course.id %>
+               <%= course.name %> </br> 
+               <%=h course.sgid%> 
+               </br>
+               </br>      
+            <% end %>  
+            <% end %>
     </td> 
       <td id= 'taking'>
+      </br>
+        <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
+          </br>
+          </br>
 
-              <%= form_tag update_multiple_user_courses_relationships_path do %>               
-                <% @take.each do |course| %>
-                <%= check_box_tag "course_ids[]", course.id %>
-                 <%= course.name %> </br>
-                 <%=h course.sgid%> 
+            <%= form_tag update_multiple_user_courses_relationships_path do %>               
+              <% @take.each do |course| %>
+              <%= check_box_tag "course_ids[]", course.id %>
+               <%= course.name %> </br>
+               <%=h course.sgid%> 
                  </br>
                  </br>        
               
                 
               <% end %>
-
-                </br>
-                </br>
-          <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
+           
               <% end %>
 
     </td>
     </tbody>
     </table>
+        
+        
   </div>
 </div>
 

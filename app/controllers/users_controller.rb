@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  
+#ZELF
+require 'will_paginate/array' 
 
   def new
     @user = User.new     
@@ -52,11 +53,17 @@ elsif params[:type] == 'staff'
   end
 end
 
+#ZELF
+def page_results
+  @page_results = @result.paginate(page: params[:page],  :per_page => 10)
+end
+  
+
     def show
     @courses = Course.all.paginate(page: params[:page], :per_page => 10)
     end
 
-      def mycourses
+    def mycourses
      @shopcourses = Course.joins(:user_courses_relationships).where("shop = ?", true).paginate(:per_page => 10, :page => params[:page])
      @takecourses = Course.joins(:user_courses_relationships).where("take = ?", true).paginate(:per_page => 10, :page => params[:page])
      @shop = @shopcourses.where("user_id = ?", current_user.id )
@@ -99,13 +106,6 @@ end
     @courses = Course.joins(:user_courses_relationships).where("shop = ?", true).paginate(:per_page => 10, :page => params[:page])
    end
 
- 
-
-   
-
-  
-
-   
 
   private
 
