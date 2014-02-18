@@ -27,6 +27,7 @@ UvAcourses::Application.routes.draw do
   match '/recent', to: 'users#recently_viewed', via: 'get'
   match 'shop',     to: 'users#shop',           via: 'get'
   match '/edit',    to: 'users#edit',           via: 'get'
+  match '/search', to: 'search#index', via: 'get'
   match '/recent', to: 'users#set_cookie', via: 'post'
 
   # The priority is based upon order of creation:
