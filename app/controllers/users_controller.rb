@@ -55,6 +55,7 @@ class UsersController < ApplicationController
     else
       @courses = []
     end
+    @courses= @courses.paginate(page: params[:page], :per_page => 10)
   end
 
  end

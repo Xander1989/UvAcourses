@@ -4,57 +4,95 @@
   </div>
 
   <div class="span9">
+    <h1> Courses in Cart </h1>
+
     <table class="table table-bordered courseview" style="border-collapse:collapse;">
       <thead class="accordion-group">
         <tr>
-          <th><%=  "Courses I'm Shopping" %></th>
-          <th><%=  "Courses I'm Taking" %></th>
+          <th><%=  %></th>
+          <th><%=  "Catalogue Number" %></th>
+          <th><%=  "Course Name" %></th>
+          <th><%= "ects"  %> </th>
         </tr>
       </thead>
+      <tbody class="accordion-group">
+        <%= form_tag update_multiple_user_courses_relationships_path do %>
+        <% @shop.each do |course| %>
+        
+          <tr data-toggle="collapse" data-target="#<%= course.id %>" class="accordion-toggle">
+            <td><%= check_box_tag "course_ids[]", course.id %></td>
+            <td><%= course.acode %></td>
+            <td><%= course.name %></td>
+            <td><%= course.ects %></td>
+          </tr>
+          <tr class="hiderow">
+            <td colspan="3" class="hiddenRow"><div class="accordian-body collapse" id="<%= course.id %>"> 
+            <ul>
+              <li> <b> Staff </b> <%= course.staff_name %> </li> 
+              <li> <b> Time Period: </b> <%= course.period %> </li>
+              <li> <b> Institute: </b> <%= course.institute %> </li>
+              <li> <b> Objectives: </b> <%= strip_tags(sanitize(course.goals)) %> </li> 
+              <li> <b> Description: </b> <%= strip_tags(sanitize(course.description)) %> </li> 
+              <li> <b> Study Materials: </b>  <%= strip_tags(sanitize(course.lecture_material)) %> </li>
+              <li> <b> Examination: </b> <%= strip_tags(sanitize(course.examination)) %> </li> 
+           </ul> </div>
+         </td> 
+        </tr>
+        <% end %>
+        
+      </tbody>
+    </table>
 
-    <tbody>
-      <td id= 'shopping'>
-      </br>
+     <%= will_paginate @shop %>
+
         <%= submit_tag "Take Selection", :name => 'take_button', class: "btn btn-success" %>
         <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
+       <% end %> 
 
-          </br>
-          </br>
- 
-            <%= form_tag update_multiple_user_courses_relationships_path do %>
-              <% @shop.each do |course| %>
-              <%= check_box_tag "course_ids[]", course.id %>
-               <%= course.name %> </br> 
-               <%=h course.sgid%> 
-               </br>
-               </br>      
-            <% end %>  
-            <% end %>
-    </td> 
-      <td id= 'taking'>
-      </br>
-        <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
-          </br>
-          </br>
 
-            <%= form_tag update_multiple_user_courses_relationships_path do %>               
-              <% @take.each do |course| %>
-              <%= check_box_tag "course_ids[]", course.id %>
-               <%= course.name %> </br>
-               <%=h course.sgid%> 
-                 </br>
-                 </br>        
-              
-                
-              <% end %>
-           
-              <% end %>
+     <h1> Courses I'm Taking </h1>
 
-      </td>
-    </tbody>
-  </table>
-     <div class="paginate"><%= will_paginate @takecourses %></div>   
+    <table class="table table-bordered courseview" style="border-collapse:collapse;">
+      <thead class="accordion-group">
+        <tr>
+          <th><%=  %></th>
+          <th><%=  "Catalogue Number" %></th>
+          <th><%=  "Course Name" %></th>
+          <th><%= "ects"  %> </th>
+        </tr>
+      </thead>
+      <tbody class="accordion-group">
+        <%= form_tag update_multiple_user_courses_relationships_path do %>
+        <% @take.each do |course| %>
         
+          <tr data-toggle="collapse" data-target="#<%= course.id %>" class="accordion-toggle">
+            <td><%= check_box_tag "course_ids[]", course.id %></td>
+            <td><%= course.acode %></td>
+            <td><%= course.name %></td>
+            <td><%= course.ects %></td>
+          </tr>
+          <tr class="hiderow">
+            <td colspan="3" class="hiddenRow"><div class="accordian-body collapse" id="<%= course.id %>"> 
+            <ul>
+              <li> <b> Staff </b> <%= course.staff_name %> </li> 
+              <li> <b> Time Period: </b> <%= course.period %> </li>
+              <li> <b> Institute: </b> <%= course.institute %> </li>
+              <li> <b> Objectives: </b> <%= strip_tags(sanitize(course.goals)) %> </li> 
+              <li> <b> Description: </b> <%= strip_tags(sanitize(course.description)) %> </li> 
+              <li> <b> Study Materials: </b>  <%= strip_tags(sanitize(course.lecture_material)) %> </li>
+              <li> <b> Examination: </b> <%= strip_tags(sanitize(course.examination)) %> </li> 
+           </ul> </div>
+         </td> 
+        </tr>
+        <% end %>
+        
+      </tbody>
+    </table>
+
+     <%= will_paginate @take %>
+
+    <%= submit_tag "Delete Selection", :name => 'delete_button', class: "btn btn-danger" %>
+    <% end %>
   </div>
 </div>
 
